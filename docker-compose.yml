@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: teamtask
+      POSTGRES_PASSWORD: teamtask
+      POSTGRES_DB: teamtask
+    ports:
+      - "5432:5432"
+    volumes:
+      - teamtask_pg:/var/lib/postgresql/data
+
+volumes:
+  teamtask_pg:

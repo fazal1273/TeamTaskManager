@@ -1,0 +1,27 @@
+{
+  "name": "team-task-manager",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "npm run start -w server",
+    "db:generate": "npm run prisma:generate -w server",
+    "db:migrate": "npm run prisma:migrate -w server",
+    "db:push": "npm run prisma:push -w server",
+    "db:migrate:deploy": "npm run migrate:deploy -w server"
+  },
+  "overrides": {
+    "prisma": "6.19.3",
+    "@prisma/client": "6.19.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
